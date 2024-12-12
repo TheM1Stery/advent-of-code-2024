@@ -124,8 +124,6 @@ fn is_sorted_special(row: &Levels) -> bool {
 }
 
 fn is_sorted_special_two(row: &Levels) -> bool {
-    let mut removed_count = 0;
-
     //for (idx, levels) in row.windows(2).skip(1).enumerate() {
     //    if removed_count > 1 {
     //        return false;
@@ -152,8 +150,6 @@ fn is_sorted_special_two(row: &Levels) -> bool {
     // !is_unsafe || removed_count == 1
 
     // i'm just giving up dude, just gonna brute force this
-
-    let mut is_unsafe = false;
     let mut prev = 0;
 
     // check if the vec is safe without removing anything
@@ -172,12 +168,8 @@ fn is_sorted_special_two(row: &Levels) -> bool {
         if is_safe && (prev != *el) {
             return true;
         }
-
-        if !is_unsafe && !is_safe {
-            is_unsafe = true;
-        }
         prev = *el;
     }
 
-    !is_unsafe || removed_count == 1
+    false
 }
