@@ -43,6 +43,9 @@ fn read_input() -> Result<Input> {
             buf.clear();
             continue;
         }
+        // to remove the newline at the end of lines, won't parse the numbers if not done
+        // i can use the lines iterator that doesn't have this problem, but it creates an allocation on each line, not efficient
+        // in my eyes. This way i can reuse the same buffer
         buf.pop();
         match switch {
             false => {
